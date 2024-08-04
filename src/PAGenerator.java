@@ -11,10 +11,10 @@ public class PAGenerator
         minimum = 0;
         limit = 0;
         Print.printLn("Instructions:\n\tYou'll be asked to input 2 numbers separately, " +
-                "the first (target number) must be the one on which the\n\tprogression list should start, " +
-                "and the second (limit), where it should end.\n\t" +
-                "If you input a second number that's bigger than the first,\n\tit'll automatically be treated as " +
-                "the first, so don't worry about that.\n");
+                "the first (target number) must be the one on which the\n\t" +
+                "progression list should start, and the second (limit), " +
+                "where it should end.\n\t" + "If you input a second number that's bigger than the first," +
+                "\n\tit'll automatically be treated as the first, so don't worry about that.\n");
         askInput();
     }
     private void askInput()
