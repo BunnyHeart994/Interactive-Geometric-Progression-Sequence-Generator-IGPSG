@@ -1,0 +1,93 @@
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.*;\r\nimport java.lang.*;\r\npublic class Main\r\n{\r\n    public static void main(String[] args)\r\n    {\r\n        PAGenerator pAG = new PAGenerator();\r\n\r\n        Print.printLn(\"Interactive Geometric Progression Sequence Generator (IGPSG)\\n\" +\r\n                \"Version 1.0.0 by Henrique.\\n\" +\r\n                \"This is a multiplication geometric progression list generator, of common ratio 2.\");\r\n\r\n        pAG.start();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	(revision d7dfaa1d67eb75bad8cc876101b4c1097f92a24e)
++++ b/src/Main.java	(date 1722807600979)
+@@ -7,7 +7,7 @@
+         PAGenerator pAG = new PAGenerator();
+ 
+         Print.printLn("Interactive Geometric Progression Sequence Generator (IGPSG)\n" +
+-                "Version 1.0.0 by Henrique.\n" +
++                "Version 1.0.1 by Henrique.\n" +
+                 "This is a multiplication geometric progression list generator, of common ratio 2.");
+ 
+         pAG.start();
+Index: src/PAGenerator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.lang.*;\r\nimport java.util.*;\r\n\r\npublic class PAGenerator\r\n{\r\n    //Scanner scanner = new Scanner(System.in);\r\n    private int minimum, limit;\r\n\r\n    public void start()\r\n    {\r\n        minimum = 0;\r\n        limit = 0;\r\n        Print.printLn(\"Instructions:\\n\\tYou'll be asked to input 2 numbers separately, \" +\r\n                \"the first (target number) must be the one on which the\\n\\t\" +\r\n                \"progression list should start, and the second (limit), \" +\r\n                \"where it should end.\\n\\t\" + \"If you input a second number that's bigger than the first,\" +\r\n                \"\\n\\tit'll automatically be treated as the first, so don't worry about that.\\n\");\r\n        askInput();\r\n    }\r\n    private void askInput()\r\n    {\r\n        //this.minimum = Integer.parseInt(scanner.nextLine()); //obsolete\r\n\r\n        do\r\n        {\r\n            this.minimum = Scan.integer(\"Begin.\\nTarget number: \");\r\n            if (this.minimum == 0)\r\n            {\r\n                Print.printLn(\"Zero is not valid. Try another one.\");\r\n            }\r\n            else break;\r\n        } while (true);\r\n\r\n        do\r\n        {\r\n            this.limit = Scan.integer(\"Limit: \");\r\n            if (this.limit == 0)\r\n                Print.printLn(\"Zero is not valid. Try another number:\");\r\n            else if (this.limit < this.minimum)\r\n            {\r\n                Print.printLn(\"Limit is smaller than target number.\\n\" +\r\n                        \"Values have automatically been swapped.\");\r\n                int temp;\r\n                temp = this.minimum;\r\n                this.minimum = limit;\r\n                this.limit = temp;\r\n                break;\r\n            }\r\n            else break;\r\n        } while (true);\r\n\r\n        Print.printLn(\"Multiplication geometric progression list of common ratio 2:\");\r\n        generateList();\r\n    }\r\n    private void generateList()\r\n    {\r\n        if ((minimum * 2) > limit)\r\n        {\r\n            Print.printLn(\"\\n\" + minimum + \". End\");\r\n            //return;\r\n        }\r\n        else\r\n        {\r\n            int loopCount = 0;\r\n            while (true)\r\n            {\r\n                if (loopCount == 5)\r\n                {\r\n                    Print.print(\"\\n\");\r\n                    loopCount = 0;\r\n                }\r\n                if (((minimum * 2) == limit) || (((minimum * 2) <= limit) & ((minimum * 4) >= limit)))\r\n                {\r\n                    Print.print(minimum + \", \" + (minimum * 2) +\r\n                            ((minimum * 4 == limit) ? \", \" + (minimum * 4) + \".\\nEnd.\" : \".\\nEnd.\"));\r\n                    break;\r\n                }\r\n                else\r\n                {\r\n                    Print.print(minimum + \", \");\r\n                    minimum *= 2;\r\n                    loopCount++;\r\n                }\r\n            }\r\n            //return;\r\n        }\r\n    }\r\n    /*private boolean exitState(boolean isTrue)\r\n    {\r\n        this.exit = isTrue;\r\n        return isTrue;\r\n    }*/\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PAGenerator.java b/src/PAGenerator.java
+--- a/src/PAGenerator.java	(revision d7dfaa1d67eb75bad8cc876101b4c1097f92a24e)
++++ b/src/PAGenerator.java	(date 1722807549528)
+@@ -4,17 +4,19 @@
+ public class PAGenerator
+ {
+     //Scanner scanner = new Scanner(System.in);
+-    private int minimum, limit;
++    private int minimum, commonRation, limit;
+ 
+     public void start()
+     {
+         minimum = 0;
+         limit = 0;
+-        Print.printLn("Instructions:\n\tYou'll be asked to input 2 numbers separately, " +
+-                "the first (target number) must be the one on which the\n\t" +
+-                "progression list should start, and the second (limit), " +
+-                "where it should end.\n\t" + "If you input a second number that's bigger than the first," +
+-                "\n\tit'll automatically be treated as the first, so don't worry about that.\n");
++        Print.printLn("Instructions:\n\tYou'll be asked to input 3 numbers separately, " +
++                "the first must be the one at which the\n\t" +
++                "progression list should start; the second (the common ration), " +
++                "the one by which all resulting numbers must be multiplied by;\n\t" +
++                "and the third is a limit for the sequence, at which it'll end before, or at it.\n\t" +
++                "If you input a second number that's bigger than the first, \n\t" +
++                "it'll automatically be treated as the first, so don't worry about that.\n");
+         askInput();
+     }
+     private void askInput()
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"Interactive-Geometric-Progression-Sequence-Generator-IGPSG:jar\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"25eabf11-8fc1-4659-871a-a9a06eabea4f\" name=\"Changes\" comment=\"Commit.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/artifacts/Interactive_Geometric_Progression_Sequence_Generator_IGPSG_jar.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/artifacts/Interactive_Geometric_Progression_Sequence_Generator_IGPSG_jar.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Executables/Interactive_Geometric_Progression_Sequence_Generator_IGPSG_jar/Interactive-Geometric-Progression-Sequence-Generator-IGPSG.jar\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Executables/Interactive-Geometric-Progression-Sequence-Generator-IGPSG.jar\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"Version-1.0.0\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2kCQzp6QJyrzTOD7A62yPWCcAmW\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"D:/Projects/Java/Interactive-Geometric-Progression-Sequence-Generator-IGPSG/src\",\r\n    \"project.structure.last.edited\": \"Artifacts\",\r\n    \"project.structure.proportion\": \"0.16210938\",\r\n    \"project.structure.side.proportion\": \"0.25172412\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\Projects\\Java\\Interactive-Geometric-Progression-Sequence-Generator-IGPSG\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"Interactive-Geometric-Progression-Sequence-Generator-IGPSG\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"25eabf11-8fc1-4659-871a-a9a06eabea4f\" name=\"Changes\" comment=\"\" />\r\n      <created>1722785343543</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1722785343543</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"First commit.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1722785668587</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1722785668587</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"First commit.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1722785718588</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1722785718588</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"First commit.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1722786039497</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1722786039497</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Commit.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1722804682577</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1722804682577</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"First commit.\" />\r\n    <MESSAGE value=\"Commit.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Commit.\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d7dfaa1d67eb75bad8cc876101b4c1097f92a24e)
++++ b/.idea/workspace.xml	(date 1722807549590)
+@@ -10,9 +10,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="25eabf11-8fc1-4659-871a-a9a06eabea4f" name="Changes" comment="Commit.">
+-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Interactive_Geometric_Progression_Sequence_Generator_IGPSG_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Interactive_Geometric_Progression_Sequence_Generator_IGPSG_jar.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Executables/Interactive_Geometric_Progression_Sequence_Generator_IGPSG_jar/Interactive-Geometric-Progression-Sequence-Generator-IGPSG.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Executables/Interactive-Geometric-Progression-Sequence-Generator-IGPSG.jar" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/PAGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PAGenerator.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -119,7 +118,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1722804682577</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="Commit.">
++      <option name="closed" value="true" />
++      <created>1722807110549</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1722807110549</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
