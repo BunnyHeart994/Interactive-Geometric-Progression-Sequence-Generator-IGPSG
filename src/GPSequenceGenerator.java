@@ -76,11 +76,11 @@ public class GPSequenceGenerator
                 }
                 if (((minimum * commonRatio) == limit) ||
                         (((minimum * commonRatio) <= limit) &
-                                (minimum * (Math.pow(commonRatio, commonRatio)) >= limit)))
+                                (minimum * (Math.pow(commonRatio, 2)) >= limit)))
                 {
                     Print.print(minimum + ", " + (minimum * commonRatio) +
-                            ((minimum * Math.pow(commonRatio, commonRatio) == limit) ?
-                                    ", " + (minimum * (Math.pow(commonRatio, commonRatio))) + ".\nEnd." :
+                            ((minimum * Math.pow(commonRatio, 2) == limit) ?
+                                    ", " + (minimum * (Math.pow(commonRatio, 2))) + ".\nEnd." :
                                     ".\nEnd."));
                     break;
                 }
