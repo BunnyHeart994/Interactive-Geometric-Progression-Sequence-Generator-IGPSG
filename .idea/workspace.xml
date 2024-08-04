@@ -10,9 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25eabf11-8fc1-4659-871a-a9a06eabea4f" name="Changes" comment="Commit.">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Interactive_Geometric_Progression_Sequence_Generator_IGPSG_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Interactive_Geometric_Progression_Sequence_Generator_IGPSG_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Executables/Interactive_Geometric_Progression_Sequence_Generator_IGPSG_jar/Interactive-Geometric-Progression-Sequence-Generator-IGPSG.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Executables/Interactive-Geometric-Progression-Sequence-Generator-IGPSG.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PAGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PAGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +41,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Version-1.0.1",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Projects/Java/Interactive-Geometric-Progression-Sequence-Generator-IGPSG/src",

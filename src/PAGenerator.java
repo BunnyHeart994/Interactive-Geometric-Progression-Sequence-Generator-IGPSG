@@ -72,7 +72,8 @@ public class PAGenerator
                 if (((minimum * 2) == limit) || (((minimum * 2) <= limit) & ((minimum * 4) >= limit)))
                 {
                     Print.print(minimum + ", " + (minimum * 2) +
-                            ((minimum * 4 == limit) ? ", " + (minimum * 4) + ".\nEnd." : ".\nEnd."));
+                            ((minimum * 4 == limit) ?
+                                    ", " + (minimum * 4) + ".\nEnd." : ".\nEnd."));
                     break;
                 }
                 else
