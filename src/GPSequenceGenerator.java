@@ -1,7 +1,6 @@
 public class GPSequenceGenerator
 {
-    //Scanner scanner = new Scanner(System.in);
-    private int minimum, commonRation, limit;
+    private int minimum, commonRatio, limit;
 
     public void start()
     {
@@ -18,12 +17,19 @@ public class GPSequenceGenerator
     }
     private void askInput()
     {
-        //this.minimum = Integer.parseInt(scanner.nextLine()); //obsolete
-
         do
         {
-            this.minimum = Scan.integer("Begin.\nTarget number: ");
+            this.minimum = Scan.integer("Begin.\nMinimum: ");
             if (this.minimum == 0)
+            {
+                Print.printLn("Zero is not valid. Try another one.");
+            }
+            else break;
+        } while (true);
+        do
+        {
+            this.commonRatio = Scan.integer("Common ratio: ");
+            if (this.commonRatio == 0)
             {
                 Print.printLn("Zero is not valid. Try another one.");
             }
@@ -35,53 +41,56 @@ public class GPSequenceGenerator
             this.limit = Scan.integer("Limit: ");
             if (this.limit == 0)
                 Print.printLn("Zero is not valid. Try another number:");
-            else if (this.limit < this.minimum)
-            {
-                Print.printLn("Limit is smaller than target number.\n" +
-                        "Values have automatically been swapped.");
-                int temp;
-                temp = this.minimum;
-                this.minimum = limit;
-                this.limit = temp;
-                break;
-            }
+//            else if (this.limit < this.minimum)
+//            {
+//                Print.printLn("Limit is smaller than target number.\n" +
+//                        "Values have automatically been swapped.");
+//                int temp;
+//                temp = this.minimum;
+//                this.minimum = limit;
+//                this.limit = temp;
+//                break;
+//            }
             else break;
         } while (true);
 
-        Print.printLn("Multiplication geometric progression list of common ratio 2:");
+        Print.printLn("Multiplication geometric progression list of common ratio " +
+                commonRatio + ":");
         generateList();
     }
     private void generateList()
     {
-        if ((minimum * 2) > limit)
+        if ((minimum * commonRatio) > limit)
         {
             Print.printLn("\n" + minimum + ". End");
-            //return;
         }
         else
         {
             int loopCount = 0;
             while (true)
             {
-                if (loopCount == 5)
+                if (loopCount == 10)
                 {
                     Print.print("\n");
                     loopCount = 0;
                 }
-                if (((minimum * 2) == limit) || (((minimum * 2) <= limit) & ((minimum * 4) >= limit)))
+                if (((minimum * commonRatio) == limit) ||
+                        (((minimum * commonRatio) <= limit) &
+                                (minimum * (Math.pow(commonRatio, commonRatio)) >= limit)))
                 {
-                    Print.print(minimum + ", " + (minimum * 2) +
-                            ((minimum * 4 == limit) ? ", " + (minimum * 4) + ".\nEnd." : ".\nEnd."));
+                    Print.print(minimum + ", " + (minimum * commonRatio) +
+                            ((minimum * Math.pow(commonRatio, commonRatio) == limit) ?
+                                    ", " + (minimum * (Math.pow(commonRatio, commonRatio))) + ".\nEnd." :
+                                    ".\nEnd."));
                     break;
                 }
                 else
                 {
                     Print.print(minimum + ", ");
-                    minimum *= 2;
+                    minimum *= commonRatio;
                     loopCount++;
                 }
             }
-            //return;
         }
     }
     /*private boolean exitState(boolean isTrue)
