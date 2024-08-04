@@ -1,20 +1,19 @@
-import java.lang.*;
-import java.util.*;
-
-public class PAGenerator
+public class GPSequenceGenerator
 {
     //Scanner scanner = new Scanner(System.in);
-    private int minimum, limit;
+    private int minimum, commonRation, limit;
 
     public void start()
     {
         minimum = 0;
         limit = 0;
-        Print.printLn("Instructions:\n\tYou'll be asked to input 2 numbers separately, " +
-                "the first (target number) must be the one on which the\n\t" +
-                "progression list should start, and the second (limit), " +
-                "where it should end.\n\t" + "If you input a second number that's bigger than the first," +
-                "\n\tit'll automatically be treated as the first, so don't worry about that.\n");
+        Print.printLn("Instructions:\n\tYou'll be asked to input 3 numbers separately, " +
+                "the first must be the one at which the\n\t" +
+                "progression list should start; the second (the common ration), " +
+                "the one by which all resulting numbers must be multiplied by;\n\t" +
+                "and the third is a limit for the sequence, at which it'll end before, or at it.\n\t" +
+                "If you input a second number that's bigger than the first, \n\t" +
+                "it'll automatically be treated as the first, so don't worry about that.\n");
         askInput();
     }
     private void askInput()
