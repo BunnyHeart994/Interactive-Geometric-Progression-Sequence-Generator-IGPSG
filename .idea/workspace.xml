@@ -9,9 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25eabf11-8fc1-4659-871a-a9a06eabea4f" name="Changes" comment="First commit.">
-      <change beforePath="$PROJECT_DIR$/src/PAGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PAGenerator.java" afterDir="false" />
-    </list>
+    <list default="true" id="25eabf11-8fc1-4659-871a-a9a06eabea4f" name="Changes" comment="First commit." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
