@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Interactive-Geometric-Progression-Sequence-Generator-IGPSG:jar">
+    <output-path>$PROJECT_DIR$/Executables/Interactive_Geometric_Progression_Sequence_Generator_IGPSG_jar</output-path>
+    <root id="archive" name="Interactive-Geometric-Progression-Sequence-Generator-IGPSG.jar">
+      <element id="module-output" name="Interactive-Geometric-Progression-Sequence-Generator-IGPSG" />
+    </root>
+  </artifact>
+</component>
