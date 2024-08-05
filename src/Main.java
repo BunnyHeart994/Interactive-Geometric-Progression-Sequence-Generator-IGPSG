@@ -7,7 +7,7 @@ public class Main
         GPSequenceGenerator pAG = new GPSequenceGenerator();
 
         Print.printLn("Interactive Geometric Progression Sequence Generator (IGPSG)\n" +
-                "Version 1.0.1 by Henrique.\n" +
+                "Version 1.1.0 by Henrique.\n" +
                 "This is a multiplication geometric progression list generator, of common ratio 2.");
 
         pAG.start();
