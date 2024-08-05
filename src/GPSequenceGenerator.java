@@ -75,10 +75,11 @@ public class GPSequenceGenerator
                     loopCount = 0;
                 }
                 if (((minimum * commonRatio) == limit) || (((minimum * commonRatio) <= limit) &
-                        ((minimum * (Math.pow(commonRatio, 2))) >= limit)))
+                        ((Math.pow(minimum, 2)) >= limit)))
                 {
                     Print.print(minimum + ", " + (minimum * commonRatio) +
-                            (((minimum * Math.pow(commonRatio, 2)) == limit) ? ", " + (minimum * (Math.pow(commonRatio, 2))) + ".\nEnd." : ".\nEnd."));
+                            (((Math.pow(minimum, 2)) == limit) ?
+                                    ", " + (Math.pow(minimum, 2)) + ".\nEnd." : ".\nEnd."));
                     break;
                 }
                 else
@@ -90,9 +91,4 @@ public class GPSequenceGenerator
             }
         }
     }
-    /*private boolean exitState(boolean isTrue)
-    {
-        this.exit = isTrue;
-        return isTrue;
-    }*/
 }
